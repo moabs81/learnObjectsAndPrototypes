@@ -1,6 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var htmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+//const eslintFormatter = require('eslintFormatter');
 
 module.exports = {
     devtool: 'cheap-eval-source-map',
@@ -22,41 +23,52 @@ module.exports = {
     ],
     module: {
         rules: [{
-                test: /\.(js)$/,
-                use: [{
-                    options: {
-                        formatter: esLintFormatter,
-                        eslintPath: require.resolve('eslint')
-                    }
-                }],
-                loader: require.resolve('eslint-loader')
-            },
-            {
+                enforce: 'pre',
                 test: /\.js$/,
-                use: {
-                    loader: 'babel-loader'
-                }
+                exclude: /node_modules/,
+                loader: 'eslint-loader'
             },
             {
-                test: /\.(jpg|jpeg|png|svg)$/,
-                use: {
-                    loader: 'file-loader'
-                }
-                //include: path.join(__dirname, 'src/imgs/')
-            },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: 'less-loader',
-                    options: {
-                        strictMath: true,
-                        noIeCompat: true
+                oneOf: [{
+                        test: /\.(jpg|jpeg|png|svg)$/,
+                        exclude: /node_modules/,
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8000,
+                            name: '[name]-[hash:6].[ext]'
+                        }
+                    },
+                    {
+                        test: /\.js$/,
+                        exclude: /node_modules/,
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true
+                        }
+                    },
+                    {
+                        test: /\.less$/,
+                        exclude: /node_modules/,
+                        use: [{
+                            loader: 'style-loader'
+                        }, {
+                            loader: 'css-loader'
+                        }, {
+                            loader: 'less-loader',
+                            options: {
+                                strictMath: true,
+                                noIeCompat: true
+                            }
+                        }]
+                    },
+                    {
+                        exclude: [/\.js$/, /\.html$/, /\.json$/],
+                        loader: 'file-loader',
+                        options: {
+                            name: 'media/[name]-[hash:6].[ext]'
+                        }
                     }
-                }]
+                ]
             }
         ]
     },
