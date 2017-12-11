@@ -1,0 +1,54 @@
+#tableStyle(){
+    border: 1px solid #a52828c9;                    
+    padding: 5px;
+}
+
+#containerSizes(){    
+    width: 30vw;
+    padding: 50px;
+}
+
+#siteFont(){
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#alertBanner{    
+    #siteFont;
+    color: #bf1313;
+    font-weight: bold;
+}
+
+#contentContainer{
+    #siteFont;
+    display: flex;   
+    flex-wrap: wrap; 
+    flex-direction: row;
+    #formDiv{
+        #containerSizes;
+        form{
+            text-align: center;
+        }
+    }
+    #ResultTable{        
+        table{
+            #containerSizes;
+            tbody{
+                tr{                
+                    td{
+                        #tableStyle;
+                    }
+                }
+            }
+        }
+    }
+    #searchHistory{
+        table{     
+            #containerSizes;
+            tr{                
+                td{
+                    #tableStyle;
+                }
+            }            
+        }
+    }
+}

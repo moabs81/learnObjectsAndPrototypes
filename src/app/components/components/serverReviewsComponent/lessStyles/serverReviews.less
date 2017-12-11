@@ -1,0 +1,80 @@
+#visibleBorders() {
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+}
+
+#slowTransition() {
+    -webkit-transition: 0.3s;
+}
+
+#moreButton() {
+    position: relative;
+    color: #f1f1f1;
+    border-width: 0px;
+    padding: 30px;
+}
+
+#upArrow() {}
+
+#downArrow() {}
+
+#noArrow() {}
+
+.componentContainer {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    cursor: default;
+    .componentContainerTitle {
+        font-weight: bold;
+        font-size: 2em;
+        padding: 50px;
+    }
+    .tableContainer {
+        width: 100%;
+        .tCol0 {
+            width: 20%;
+            float: left;
+        }
+        .tCol1 {
+            margin-left: 20%;
+        }
+        .tHeaderRow {
+            font-weight: bold;
+            font-size: 1.24em;
+            .tHeaderCell {
+                .tHeaderButton {
+                    .asc {
+                        color: rgb(53, 160, 65)
+                    }
+                    .dec {
+                        color: rgb(58, 159, 213)
+                    }
+                    .inactive {
+                        color: rgb(235, 6, 6);
+                    }
+                }
+            }
+        }
+        .tBodyContentRow {
+            display: none;
+            padding: 20px; 
+            .tBodyCol1Title {
+                font-weight: bold;
+            }
+        }
+        .tBodyContentRow:nth-child(even) {
+            background-color: #CCCCCC;
+        }
+        .tBodyButtonRow {
+            text-align: center;
+            #getMoreButton {
+                #moreButton;
+                background-color: rgb(182, 164, 59);           
+                transition: transform 0.3s;                     
+            }
+            #getMoreButton:hover{                
+                transform: perspective(50px) translateZ(-10px);
+            }
+        }        
+    }
+}

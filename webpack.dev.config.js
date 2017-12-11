@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-//const eslintFormatter = require('eslintFormatter');
 
 module.exports = {
     devtool: 'cheap-eval-source-map',

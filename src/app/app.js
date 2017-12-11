@@ -1,11 +1,42 @@
 'use strict';
-console.log('we\'re here');
-import book1 from '../library/book1';
 
-import { var1 } from '../library/book1';
+require('./style.less');
 
-import { funct2 } from '../library/book1';
+import { apiData } from '../library/ajaxCalls';
 
-console.log(var1);
+import { paintForm } from '../library/book1';
 
-funct2([3, 2]);
+var cbReturn = function(e) {
+    e.preventDefault();
+    const apiRequest = {
+        baseURI: 'https://api.iextrading.com/1.0',
+        searchReq: '/stock/' + e.path[1].childNodes[2].value + '/quote',
+        method: 'GET',
+        success: function() {
+            //console.log(this);
+            $('#alertBanner').html(' ');
+            if (this.status == 404) {
+                $('#alertBanner').html('404 ERROR - ' + this.statusText);
+            } else {
+                var returnObj = JSON.parse(this.response);
+                //console.log(returnObj);                
+                $('#ResultTable').html(
+                    '<table>' +
+                    '<tr><td> ' + returnObj.symbol + ' </td></tr>' +
+                    '<tr><td> ' + returnObj.companyName + ' </td></tr>' +
+                    '<tr><td> ' + returnObj.sector + ' </td></tr>' +
+                    '<tr><td> ' + returnObj.latestPrice + ' </td></tr>' +
+                    '<tr><td> ' + returnObj.primaryExchange + ' </td></tr>' +
+                    '<tr><td> ' + returnObj.latestTime + ' </td></tr>' +
+                    '</table>'
+                );
+                $('#searchHistory table').append(
+                    '<tr><td> ' + returnObj.companyName + ' (' + returnObj.symbol + ')</td></tr>'
+                );
+
+            }
+        }
+    };
+    apiData.call(apiRequest);
+};
+paintForm.call(cbReturn);
