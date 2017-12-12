@@ -10,7 +10,7 @@ var cbReturn = function(e) {
     e.preventDefault();
     const apiRequest = {
         baseURI: 'https://api.iextrading.com/1.0',
-        searchReq: '/stock/' + e.path[1].childNodes[2].value + '/quote',
+        searchReq: '/stock/' + e.srcElement.parentElement.childNodes[2].value + '/quote',
         method: 'GET',
         success: function() {
             //console.log(this);
@@ -20,15 +20,13 @@ var cbReturn = function(e) {
             } else {
                 var returnObj = JSON.parse(this.response);
                 //console.log(returnObj);                
-                $('#ResultTable').html(
-                    '<table>' +
+                $('#ResultTable table').html(
                     '<tr><td> ' + returnObj.symbol + ' </td></tr>' +
                     '<tr><td> ' + returnObj.companyName + ' </td></tr>' +
                     '<tr><td> ' + returnObj.sector + ' </td></tr>' +
                     '<tr><td> ' + returnObj.latestPrice + ' </td></tr>' +
                     '<tr><td> ' + returnObj.primaryExchange + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.latestTime + ' </td></tr>' +
-                    '</table>'
+                    '<tr><td> ' + returnObj.latestTime + ' </td></tr>'
                 );
                 $('#searchHistory table').append(
                     '<tr><td> ' + returnObj.companyName + ' (' + returnObj.symbol + ')</td></tr>'
@@ -38,5 +36,7 @@ var cbReturn = function(e) {
         }
     };
     apiData.call(apiRequest);
+    document.getElementById('tickerInputField').value = '';
+    document.getElementById('tickerInputField').focus();
 };
 paintForm.call(cbReturn);

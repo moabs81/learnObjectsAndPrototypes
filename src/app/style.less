@@ -1,6 +1,7 @@
 #tableStyle(){
-    border: 1px solid #a52828c9;                    
-    padding: 5px;
+    border: 1px solid #a52828;
+    border-collapse: collapse;
+    padding: 10px;
 }
 
 #containerSizes(){    
@@ -31,14 +32,18 @@
     }
     #ResultTable{        
         table{
-            #containerSizes;
-            tbody{
-                tr{                
-                    td{
-                        #tableStyle;
-                    }
+            #containerSizes;                        
+            tr{                
+                td{
+                    #tableStyle;
+                    -webkit-transition: transform 0.3s;                                
+                    transition: transform 0.3s;                                
+                }                
+                td:hover{
+                    -webkit-transform: perspective(50px) translateZ(10px);
+                    transform: perspective(50px) translateZ(5px);
                 }
-            }
+            }            
         }
     }
     #searchHistory{
