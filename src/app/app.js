@@ -19,16 +19,20 @@ var cbReturn = function(e) {
                 $('#alertBanner').html('404 ERROR - ' + this.statusText);
             } else {
                 var returnObj = JSON.parse(this.response);
-                //console.log(returnObj);                
-                $('#ResultTable table').html(
-                    '<tr><td> ' + returnObj.symbol + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.companyName + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.sector + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.latestPrice + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.primaryExchange + ' </td></tr>' +
-                    '<tr><td> ' + returnObj.latestTime + ' </td></tr>'
-                );
-                $('#searchHistory table').append(
+                //console.log(returnObj);
+                var resultsArr = [
+                    ['Symbol', returnObj.symbol],
+                    ['Company', returnObj.companyName],
+                    ['Sector', returnObj.sector],
+                    ['Price', returnObj.latestPrice],
+                    ['Exchange', returnObj.primaryExchange],
+                    ['Last Time', returnObj.latestTime]
+                ];
+                $('#ResultTable table').html('');
+                resultsArr.forEach(element => {
+                    $('#ResultTable table').append('<tr><td> ' + element[0] + ' </td><td> ' + element[1] + ' </td></tr>');
+                });
+                $('#searchHistory table').prepend(
                     '<tr><td> ' + returnObj.companyName + ' (' + returnObj.symbol + ')</td></tr>'
                 );
 

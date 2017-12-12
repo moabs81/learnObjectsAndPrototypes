@@ -1,7 +1,7 @@
 #tableStyle(){
-    border: 1px solid #a52828;
+    border: none;
     border-collapse: collapse;
-    padding: 10px;
+    padding: 10px;     
 }
 
 #containerSizes(){    
@@ -19,6 +19,25 @@
     font-weight: bold;
 }
 
+#moreButton() {
+    position: relative;
+    color: #f1f1f1;
+    background-color: rgb(38, 155, 38);
+    border-width: 0px;    
+    padding: 10px;
+}
+
+//^^^^^ MIXINS ^^^^^^
+//vvvvv STYLES vvvvvv
+
+
+#formDiv{
+    #getTickerForm{
+        button{
+            #moreButton;
+        }
+    }
+}
 #contentContainer{
     #siteFont;
     display: flex;   
@@ -36,12 +55,22 @@
             tr{                
                 td{
                     #tableStyle;
-                    -webkit-transition: transform 0.3s;                                
-                    transition: transform 0.3s;                                
+                    -webkit-transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;
+                    transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;                    
                 }                
-                td:hover{
+            }
+            tr:hover{                                
+                td{
+                    border: 1px solid #a52828;
+                    //padding: 20px;
+                }
+                td:nth-child(1){                    
                     -webkit-transform: perspective(50px) translateZ(10px);
-                    transform: perspective(50px) translateZ(5px);
+                    transform: perspective(50px) rotateY(5deg);                    
+                }
+                td:nth-child(2){                    
+                    -webkit-transform: perspective(50px) translateZ(10px);
+                    transform: perspective(50px) translateZ(5px) rotateY(-5deg);                    
                 }
             }            
         }
