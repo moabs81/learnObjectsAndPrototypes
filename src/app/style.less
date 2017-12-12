@@ -1,5 +1,5 @@
-#tableStyle(){
-    border: none;
+#tableStyle(){    
+    border: 1px solid #a52828;
     border-collapse: collapse;
     padding: 10px;     
 }
@@ -55,22 +55,37 @@
             tr{                
                 td{
                     #tableStyle;
-                    -webkit-transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;
-                    transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;                    
+                    position: relative;
+                    //-webkit-transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;
+                    //transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;                    
+                    #cover{
+                        background-color: rgb(8, 210, 255);
+                        position: absolute;
+                        float: left;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        transition: transform 0.2s ease;
+                    }
                 }                
             }
             tr:hover{                                
-                td{
-                    border: 1px solid #a52828;
+                td{                    
                     //padding: 20px;
                 }
                 td:nth-child(1){                    
-                    -webkit-transform: perspective(50px) translateZ(10px);
-                    transform: perspective(50px) rotateY(5deg);                    
+                    //-webkit-transform: perspective(50px) translateZ(10px);
+                    //transform: perspective(50px) rotateY(5deg);                    
                 }
                 td:nth-child(2){                    
-                    -webkit-transform: perspective(50px) translateZ(10px);
-                    transform: perspective(50px) translateZ(5px) rotateY(-5deg);                    
+                    //-webkit-transform: perspective(50px) translateZ(10px);
+                    //transform: perspective(50px) translateZ(5px) rotateY(-5deg);                                        
+                    #cover{
+                        transform-origin: top;
+                        -webkit-transform: perspective(100px) rotateX(180deg);    
+                        transform: perspective(100px) rotateX(180deg);                            
+                    }
                 }
             }            
         }
@@ -81,6 +96,7 @@
             tr{                
                 td{
                     #tableStyle;
+                    cursor: default;
                 }
             }            
         }
