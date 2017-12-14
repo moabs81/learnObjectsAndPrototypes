@@ -1,0 +1,221 @@
+{
+    "Structures": {
+        "z_metaData": {
+            "parentName": "Structures"
+        },
+        "Server": {
+            "z_metaData": {
+                "parentName": "Server"
+            },
+            "userDefined": {
+                "z_metaData": {
+                    "parentName": "User Defined Properties"
+                },
+                "values": [{
+                    "varName": "emailAddress",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (format)"
+                }, {
+                    "varName": "password",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (format)"
+                }, {
+                    "varName": "firstName",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "cannot update",
+                    "varValidation": "not validated"
+                }, {
+                    "varName": "lastName",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "can update",
+                    "varValidation": "not validated"
+                }, {
+                    "varName": "displayName",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "cannot update",
+                    "varValidation": "hard validated (length, existing = false)"
+                }, {
+                    "varName": "restaurant01",
+                    "varType": "string",
+                    "varRequired": "optional",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (existing = true)"
+                }, {
+                    "varName": "restaurant02",
+                    "varType": "string",
+                    "varRequired": "optional",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (existing = true)"
+                }, {
+                    "varName": "restaurant03",
+                    "varType": "string",
+                    "varRequired": "optional",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (existing = true)"
+                }]
+            },
+            "systemDefined": {
+                "z_metaData": {
+                    "parentName": "System Defined Properties"
+                },
+                "values": [{
+                    "varName": "dateCreated",
+                    "varType": "date",
+                    "varRequired": "required"
+                }, {
+                    "varName": "dateLastActive",
+                    "varType": "date",
+                    "varRequired": "required"
+                }, {
+                    "varName": "activeStatus",
+                    "varType": "boolean",
+                    "varRequired": "required"
+                }]
+            }
+        },
+        "Customer": {
+            "z_metaData": {
+                "parentName": "Customer"
+            },
+            "userDefined": {
+                "z_metaData": {
+                    "parentName": "User Defined Properties"
+                },
+                "values": [{
+                    "varName": "emailAddress",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (format)"
+                }, {
+                    "varName": "password",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "can update",
+                    "varValidation": "hard validated (format)"
+                }]
+            }
+        },
+        "Review": {
+            "z_metaData": {
+                "parentName": "Review"
+            },
+            "userDefined": {
+                "z_metaData": {
+                    "parentName": "User Defined Properties"
+                },
+                "values": [{
+                    "varName": "name (FROM: Restaurant)",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varValidation": "soft validated (autoComplete based on existing = true)"
+                }, {
+                    "varName": "displayName (FROM: Server)",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varValidation": "hard validated (existing = true)"
+                }, {
+                    "varName": "reviewBody",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varValidation": "hard validated (length)"
+                }, {
+                    "varName": "emailAddress (FROM: Customer)",
+                    "varType": "string",
+                    "varRequired": "optional",
+                    "varValidation": "not validated"
+                }]
+            },
+            "systemDefined": {
+                "z_metaData": {
+                    "parentName": "System Defined Properties"
+                },
+                "values": [{
+                    "varName": "reviewID",
+                    "varType": "string",
+                    "varRequired": "required"
+                }, {
+                    "varName": "dateCreated",
+                    "varType": "date",
+                    "varRequired": "required"
+                }]
+            }
+        },
+        "Restaurant": {
+            "z_metaData": {
+                "parentName": "Restaurant"
+            },
+            "Properties": {
+                "z_metaData": {
+                    "parentName": "Properties"
+                },
+                "values": [{
+                    "varName": "name",
+                    "varType": "string",
+                    "varRequired": "required",
+                    "varMutability": "cannot update"
+                }, {
+                    "varName": "servers",
+                    "varType": "array: [displayName (FROM: Server), dateAssociated]",
+                    "varRequired": "optional",
+                    "varMutability": "concatenated"
+                }, {
+                    "varName": "reviews",
+                    "varType": "array: [reviewID (FROM: Review)]",
+                    "varRequired": "optional",
+                    "varMutability": "concatenated"
+                }]
+            }
+        }
+    },
+    "Views": {
+        "z_metaData": {
+            "parentName": "Views"
+        },
+        "serverReviews": {
+            "z_metaData": {
+                "parentName": "Server - Reviews Submitted View"
+            },
+            "fromServer": {
+                "z_metaData": {
+                    "parentName": "From \"Server\" Structure"
+                },
+                "condition": "where Server.displayName = this.displayName",
+                "varName": ["firstName", "lastName"]
+            },
+            "fromReview": {
+                "z_metaData": {
+                    "parentName": "From \"Review\" Structure"
+                },
+                "condition": "where Review.displayName = this.displayName",
+                "varName": ["name", "reviewBody", "dateCreated"]
+            }
+        },
+        "customerViews": {
+            "z_metaData": {
+                "parentName": "Customer - Submitted Reviews View"
+            },
+            "fromCustomer": {
+                "z_metaData": {
+                    "parentName": "From \"Customer\" Structure"
+                },
+                "condition": "where Customer.emailAddress = this.emailAddress",
+                "varName": ["emailAddress"]
+            },
+            "fromReview": {
+                "z_metaData": {
+                    "parentName": "From \"Review\" Structure"
+                },
+                "condition": "where Review.emailAddress = this.EmailAddress",
+                "varName": ["name", "displayName", "reviewBody", "dateCreated"]
+            }
+        }
+    }
+}

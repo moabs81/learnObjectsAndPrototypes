@@ -1,0 +1,14 @@
+{
+    "branches": [
+        { "id": "088", "branchName": "Ahoskie", "primaryPhone": "252-332-5339", "branchNumber": "088" },
+        { "id": "021", "branchName": "Archdale", "primaryPhone": "336-434-2015", "branchNumber": "021" },
+        { "id": "174", "branchName": "Chapel Hill - N Chatham Park", "primaryPhone": "919-932-7232", "branchNumber": "174" },
+        { "id": "036", "branchName": "King", "primaryPhone": "336-985-0530", "branchNumber": "036" },
+        { "id": "245", "branchName": "Swan Quarter", "primaryPhone": "252-926-3513", "branchNumber": "245" }
+    ],
+    "users": [
+        { "id": "P12345F", "name": "Pat Verbeek", "workPhone": "919-123-4567", "userID": "P12345F" },
+        { "id": "P23456F", "name": "Bob Marley", "workPhone": "919-656-4567", "userID": "P23456F" },
+        { "id": "P34567F", "name": "Rosey Spikes", "workPhone": "828-343-1253", "userID": "P34567F" }
+    ]
+}

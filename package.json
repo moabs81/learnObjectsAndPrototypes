@@ -1,37 +1,39 @@
 {
-  "name": "reporttable",
-  "version": "1.0.0",
-  "description": "component project to serve as high-fi mockup",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.config.js --hot --inline",
-    "cleanDist": "rm -rf dist/*",
-    "build": "webpack --config webpack.prod.config.js"
-  },
-  "author": "Nick",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
-    "babel-loader": "7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-runtime": "6.26.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.13.0",
-    "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.39.1",
-    "eslint-plugin-import": "2.8.0",
-    "file-loader": "^1.1.5",
-    "html-webpack-plugin": "^2.30.1",
-    "jquery": "^3.2.1",
-    "less": "^2.7.3",
-    "less-loader": "^4.0.5",
-    "style-loader": "^0.19.0",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3"
-  },
-  "dependencies": {
-    "jquery": "^3.2.1"
-  }
+    "name": "reporttable",
+    "version": "1.0.0",
+    "description": "component project to serve as high-fi mockup",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server --config webpack.dev.config.js --hot --inline",
+        "API": "json-server --watch db.json",
+        "cleanDist": "rm -rf dist/*",
+        "build": "webpack --config webpack.prod.config.js"
+    },
+    "author": "Nick",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "6.26.0",
+        "babel-eslint": "7.2.3",
+        "babel-loader": "7.1.2",
+        "babel-preset-env": "^1.6.1",
+        "babel-runtime": "6.26.0",
+        "css-loader": "^0.28.7",
+        "eslint": "^4.13.0",
+        "eslint-loader": "1.9.0",
+        "eslint-plugin-flowtype": "2.39.1",
+        "eslint-plugin-import": "2.8.0",
+        "file-loader": "^1.1.5",
+        "html-webpack-plugin": "^2.30.1",
+        "jquery": "^3.2.1",
+        "json-server": "^0.12.1",
+        "less": "^2.7.3",
+        "less-loader": "^4.0.5",
+        "style-loader": "^0.19.0",
+        "url-loader": "^0.6.2",
+        "webpack": "^3.8.1",
+        "webpack-dev-server": "^2.9.3"
+    },
+    "dependencies": {
+        "jquery": "^3.2.1"
+    }
 }

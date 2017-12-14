@@ -4,6 +4,18 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": 2
+        "constructor-super": 2,
+        "func-style": [1, "expression", {
+            "allowArrowFunctions": true
+        }],
+        "no-dupe-class-members": 1,
+        "no-implicit-coercion": 1,
+        "no-plusplus": [1, {
+            "allowForLoopAfterthoughts": true
+        }],
+        "no-var": 1,
+        "prefer-const": 1,
+        "quotes": [1, "single", "avoid-escape"],
+        "semi": 1
     }
 }
