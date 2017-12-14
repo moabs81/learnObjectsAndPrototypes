@@ -11,7 +11,7 @@ const paintForm = function() {
         '<div id = "formDiv">' +
         '<form id="getTickerForm">' +
         'Ticker Symbol:<br>' +
-        '<input type="text" name="Ticker" id="tickerInputField" autocomplete="off" autofocus><br>' +
+        '<input type="text" name="Ticker" id="tickerInputField" autocomplete="off" autofocus value="Branch:"><br>' +
         '<button type="button" id="formSubmitButton">Submit</button>' +
         '</form>' +
         '</div>' +
