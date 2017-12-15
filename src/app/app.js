@@ -2,13 +2,17 @@
 
 require('./style.less');
 
-import { apiData } from '../library/ajaxCalls';
+import {
+    apiData
+} from '../library/ajaxCalls';
 
-import { paintForm } from '../library/book1';
+import {
+    paintForm
+} from '../library/book1';
 
-var ticker;
+let ticker;
 
-const cbReturn = function(e) {
+const cbReturn = function (e) {
     e.preventDefault();
     ticker = e.srcElement.parentElement.childNodes[2].value;
 
@@ -16,7 +20,7 @@ const cbReturn = function(e) {
         baseURI: 'https://api.iextrading.com/1.0',
         searchReq: '/stock/' + ticker + '/quote',
         method: 'GET',
-        success: function() {
+        success: function () {
             //console.log(this);
             $('#alertBanner').html(' ');
             if (this.status == 404) {
@@ -33,11 +37,13 @@ const cbReturn = function(e) {
                     ['Last Time', returnObj.latestTime]
                 ];
                 $('#ResultTable table').html('');
-                resultsArr.forEach(element => { $('#ResultTable table').append('<tr><td> ' + element[0] + ' </td><td><span id="cover"></span><span id="content"> ' + element[1] + ' </span></td></tr>'); });
+                resultsArr.forEach(element => {
+                    $('#ResultTable table').append('<tr><td> ' + element[0] + ' </td><td><span id="cover"></span><span id="content"> ' + element[1] + ' </span></td></tr>');
+                });
                 $('#searchHistory table').prepend(
                     '<tr><td id="' + resultsArr[0][1] + '_Cell"> ' + resultsArr[1][1] + ' (' + resultsArr[0][1] + ')</td></tr>'
                 );
-                document.getElementById(resultsArr[0][1] + '_Cell').addEventListener('click', function(e) {
+                document.getElementById(resultsArr[0][1] + '_Cell').addEventListener('click', function (e) {
                     const target = e.srcElement.id.slice(0, -5);
                 });
 
@@ -48,9 +54,8 @@ const cbReturn = function(e) {
         baseURI: 'http://localhost:3000',
         searchReq: '/branches?branchName=' + ticker.substring(7),
         method: 'GET',
-        success: function() {
+        success: function () {
             const returnObj = JSON.parse(this.response);
-            console.log(returnObj.length);
             $('#alertBanner').html(' ');
             if (returnObj.length == 0) {
                 $('#alertBanner').html('Sorry, ' + ticker.substring(7) + ' does not appear to be a branch.');
@@ -61,7 +66,9 @@ const cbReturn = function(e) {
                     ['Phone Number', returnObj[0].primaryPhone]
                 ];
                 $('#ResultTable table').html('');
-                resultsArr.forEach(element => { $('#ResultTable table').append('<tr><td> ' + element[0] + ' </td><td><span id="cover"></span><span id="content"> ' + element[1] + ' </span></td></tr>'); });
+                resultsArr.forEach(element => {
+                    $('#ResultTable table').append('<tr><td> ' + element[0] + ' </td><td><span id="cover"></span><span id="content"> ' + element[1] + ' </span></td></tr>');
+                });
                 $('#searchHistory table').prepend(
                     '<tr><td id="' + resultsArr[0][1] + '_Cell"> ' + resultsArr[1][1] + ' (' + resultsArr[0][1] + ')</td></tr>'
                 );
@@ -83,7 +90,7 @@ const localAPI = {
     baseURI: 'http://localhost:3000',
     searchReq: '/branches?branchName=King',
     method: 'GET',
-    success: function() {
+    success: function () {
         const returnObj = JSON.parse(this.response);
         console.log(returnObj);
     }

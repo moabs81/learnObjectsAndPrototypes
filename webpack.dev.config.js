@@ -77,5 +77,6 @@ module.exports = {
     devServer: {
         inline: true,
         port: 4000
+        //useLocalIp: true
     }
 }

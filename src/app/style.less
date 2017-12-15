@@ -1,19 +1,19 @@
-#tableStyle(){    
+#tableStyle() {
     border: 1px solid #a52828;
     border-collapse: collapse;
-    padding: 10px;     
+    padding: 10px;
 }
 
-#containerSizes(){    
+#containerSizes() {
     width: 30vw;
-    padding: 50px;
+    padding: 40px;
 }
 
-#siteFont(){
+#siteFont() {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#alertBanner{    
+#alertBanner {
     #siteFont;
     color: #bf1313;
     font-weight: bold;
@@ -23,42 +23,40 @@
     position: relative;
     color: #f1f1f1;
     background-color: rgb(38, 155, 38);
-    border-width: 0px;    
+    border-width: 0px;
     padding: 10px;
 }
 
 //^^^^^ MIXINS ^^^^^^
 //vvvvv STYLES vvvvvv
-
-
-#formDiv{
-    #getTickerForm{
-        button{
+#formDiv {
+    #getTickerForm {
+        button {
             #moreButton;
         }
     }
 }
-#contentContainer{
+
+#contentContainer {
     #siteFont;
-    display: flex;   
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    #formDiv{
+    #formDiv {
         #containerSizes;
-        form{
+        form {
             text-align: center;
         }
     }
-    #ResultTable{        
-        table{
-            #containerSizes;                        
-            tr{                
-                td{
+    #ResultTable {
+        table {
+            #containerSizes;
+            tr {
+                td {
                     #tableStyle;
-                    position: relative;
-                    //-webkit-transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;
+                    position: relative; //-webkit-transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;
                     //transition: transform 0.3s, padding 0.3s ease-in, border 0.3s ease-in;                    
-                    #cover{
+                    #cover {
                         background-color: rgb(8, 210, 255);
                         position: absolute;
                         float: left;
@@ -68,37 +66,37 @@
                         right: 0;
                         transition: transform 0.2s ease;
                     }
-                }                
+                }
             }
-            tr:hover{                                
-                td{                    
+            tr:hover {
+                td {
                     //padding: 20px;
                 }
-                td:nth-child(1){                    
+                td:nth-child(1) {
                     //-webkit-transform: perspective(50px) translateZ(10px);
                     //transform: perspective(50px) rotateY(5deg);                    
                 }
-                td:nth-child(2){                    
+                td:nth-child(2) {
                     //-webkit-transform: perspective(50px) translateZ(10px);
                     //transform: perspective(50px) translateZ(5px) rotateY(-5deg);                                        
-                    #cover{
+                    #cover {
                         transform-origin: top;
-                        -webkit-transform: perspective(100px) rotateX(180deg);    
-                        transform: perspective(100px) rotateX(180deg);                            
+                        -webkit-transform: perspective(100px) rotateX(180deg);
+                        transform: perspective(100px) rotateX(180deg);
                     }
                 }
-            }            
+            }
         }
     }
-    #searchHistory{
-        table{     
+    #searchHistory {
+        table {
             #containerSizes;
-            tr{                
-                td{
+            tr {
+                td {
                     #tableStyle;
                     cursor: default;
                 }
-            }            
+            }
         }
     }
 }
